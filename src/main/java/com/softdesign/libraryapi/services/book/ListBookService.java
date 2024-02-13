@@ -20,7 +20,7 @@ public class ListBookService implements IListBookService {
 
     @Override
     @Transactional(readOnly = true)
-    public Page<BookDTO> list(Pageable page) {
-        return this.bookRepository.findAll(page).map(BookDTO::fromEntity);
+    public Page<BookDTO> list(Pageable page, String name, String author) {
+        return this.bookRepository.findAll(page, name, author).map(BookDTO::fromEntity);
     }
 }
