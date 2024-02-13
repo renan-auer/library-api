@@ -1,6 +1,7 @@
 package com.softdesign.libraryapi.dto;
 
 import com.softdesign.libraryapi.domain.BookRent;
+import com.sun.istack.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -16,6 +17,7 @@ public class BookRentDTO {
     private LocalDateTime startDate;
     private LocalDateTime endDate;
     private String bookIid;
+    private BookDTO book;
 
     public BookRent toEntity() {
         BookRent bookRent = new BookRent();
@@ -33,6 +35,9 @@ public class BookRentDTO {
         bookRentDTO.setUsername(bookRent.getUsername());
         bookRentDTO.setStartDate(bookRent.getStartDate());
         bookRentDTO.setEndDate(bookRent.getEndDate());
+        if(bookRent.getBook() != null) {
+            bookRentDTO.setBook(BookDTO.fromEntity(bookRent.getBook()));
+        }
         return bookRentDTO;
     }
 

@@ -28,10 +28,10 @@ public class BookRent {
     @Column(nullable = false)
     private LocalDateTime startDate;
 
-    @Column(nullable = false)
+    @Column
     private LocalDateTime endDate;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "book_id")
     private Book book;
 
