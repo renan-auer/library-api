@@ -19,6 +19,7 @@ public class BookDTO {
         Book book = new Book();
         book.setId(this.id);
         book.setName(this.name);
+        book.setAuthor(this.author);
         book.setPublishingCompany(this.publishingCompany);
         return book;
     }
@@ -26,7 +27,7 @@ public class BookDTO {
     public static BookDTO fromEntity(Book book) {
         BookDTO bookDTO = new BookDTO();
         bookDTO.setId(book.getId());
-        bookDTO.setName(bookDTO.name);
+        bookDTO.setName(book.getName());
         bookDTO.setAuthor(book.getAuthor());
         bookDTO.setPublishingCompany(book.getPublishingCompany());
         return bookDTO;
