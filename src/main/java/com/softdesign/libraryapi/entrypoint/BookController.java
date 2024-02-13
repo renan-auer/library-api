@@ -25,8 +25,8 @@ public class BookController {
     @ApiOperation(value = "Retorna uma lista de livros")
     @GetMapping
     public ResponseEntity<Page<BookDTO>> list(Pageable page) {
-        Page<BookDTO> pautas = this.listBookService.list(page);
-        return ResponseEntity.ok(pautas);
+        Page<BookDTO> books = this.listBookService.list(page);
+        return ResponseEntity.ok(books);
     }
 
 }
