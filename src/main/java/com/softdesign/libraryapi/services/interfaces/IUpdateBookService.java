@@ -5,6 +5,6 @@ import com.softdesign.libraryapi.dto.BookDTO;
 
 public interface IUpdateBookService {
 
-    BookDTO update(String id, BookDTO pautaDTO);
+    BookDTO update(String id, BookDTO bookDTO);
 
 }
