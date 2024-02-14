@@ -40,16 +40,26 @@ public class BookRentController {
 
     @ApiOperation(value = "Realiza o aluguel de um livro")
     @PostMapping(value = "rent")
-    public ResponseEntity<BookRentDTO> rent(@Validated @RequestBody CreateBookRentDTO createBookRentDTO) throws Exception {
-        BookRentDTO bookRentResponse = this.rentBookService.rent(createBookRentDTO);
-        return ResponseEntity.ok(bookRentResponse);
+    public ResponseEntity<ApiResponse<BookRentDTO>> rent(@Validated @RequestBody CreateBookRentDTO createBookRentDTO) throws Exception {
+        ApiResponse<BookRentDTO> response = new ApiResponse<>();
+        try{
+            response.setData(this.rentBookService.rent(createBookRentDTO));
+        } catch (Exception e) {
+            response.setError(e.getMessage());
+        }
+        return ResponseEntity.ok(response);
     }
 
     @ApiOperation(value = "Realiza a devolução de um livro")
     @PostMapping(value = "return/{id}")
-    public ResponseEntity<BookRentDTO> returnBook(@PathVariable String id) throws Exception {
-        BookRentDTO bookRentResponse = this.returnBookService.returnBook(id);
-        return ResponseEntity.ok(bookRentResponse);
+    public ResponseEntity<ApiResponse<BookRentDTO>> returnBook(@PathVariable String id) throws Exception {
+        ApiResponse<BookRentDTO> response = new ApiResponse<>();
+        try{
+            response.setData(this.returnBookService.returnBook(id));
+        } catch (Exception e) {
+            response.setError(e.getMessage());
+        }
+        return ResponseEntity.ok(response);
     }
 
 

@@ -30,13 +30,13 @@ public class RentBookService implements IRentBookService {
 
     @Override
     public BookRentDTO rent(CreateBookRentDTO createBookRentDTO) throws Exception {
-        Optional<BookRent> bookAlreadyRented = this.bookRentRepository.findByBookIdAndEndDate(createBookRentDTO.getBookIid(), null);
+        Optional<BookRent> bookAlreadyRented = this.bookRentRepository.findByBookIdAndEndDate(createBookRentDTO.getBookId(), null);
 
         if (bookAlreadyRented.isPresent()) {
             throw new Exception("Livro já está alugado!");
         }
 
-        BookDTO bookToRent = this.getBookByIdService.get(createBookRentDTO.getBookIid());
+        BookDTO bookToRent = this.getBookByIdService.get(createBookRentDTO.getBookId());
 
         if (bookToRent == null) {
             throw new Exception("Livro não encontrado!");

@@ -12,6 +12,6 @@ import java.time.LocalDateTime;
 public class CreateBookRentDTO {
 
     private String username;
-    private String bookIid;
+    private String bookId;
 
 }
